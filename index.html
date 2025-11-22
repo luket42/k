@@ -3,18 +3,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Perdón, Kaly...</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Audio en bucle -->
+    <audio id="Musica" loop>
+        <source src="Musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón para iniciar la música -->
+    <div id="clickPlay" class="click-play">Haz clic para escuchar la música 🎵</div>
+
+    <!-- Canvas principal para lluvia y partículas -->
     <canvas id="rain"></canvas>
 
+    <!-- Imagen de la rosa -->
     <img src="rosa.png" class="rose">
 
+    <!-- Texto principal -->
     <h1 class="msg">Perdón, Kaly...</h1>
 
+    <!-- Mensajes adicionales flotantes -->
+    <div class="mensajes-flotantes">
+        <span class="mensaje">Lo siento</span>
+        <span class="mensaje">Discúlpame</span>
+        <span class="mensaje">Perdóname</span>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        // Música con botón
+        const audio = document.getElementById('Musica');
+        const clickPlay = document.getElementById('clickPlay');
+
+        clickPlay.addEventListener('click', () => {
+            audio.play();
+            clickPlay.style.transition = "opacity 1s ease";
+            clickPlay.style.opacity = 0;
+            setTimeout(() => clickPlay.style.display = 'none', 1000);
+        });
+    </script>
 </body>
 </html>
